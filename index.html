@@ -29,8 +29,8 @@
             height: 100%;
             height: 100dvh;
             background: transparent;
-            /* 下部の余白を少し確保してバッジと被らないようにする */
-            padding: 6px 8px 14px 8px;
+            /* 下部にバッジを避けるためのゆとりをしっかり持たせる */
+            padding: 6px 8px 20px 8px;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
@@ -40,7 +40,7 @@
         #history-display {
             background: rgba(255, 255, 255, 0.85);
             flex-grow: 1;
-            min-height: 40px;
+            min-height: 30px;
             border: 2px solid rgba(255, 255, 255, 0.6);
             border-radius: 14px;
             padding: 6px 10px;
@@ -100,7 +100,8 @@
         .calc-btn {
             border: none;
             border-radius: 14px;
-            padding: 14px 0;
+            /* ボタンの高さを少しだけスマートにして下部に余裕を作る */
+            padding: 11px 0;
             font-size: 19px;
             font-weight: bold;
             cursor: pointer;
@@ -271,13 +272,6 @@
         updateDisplay();
     }
     
-    (function() {
-        const originalHandleNumber = handleNumber;
-        window.handleNumber = function(num) {
-            originalHandleNumber(num);
-        };
-    })();
-
     function handlePlusMinus() {
         if (currentInput !== '0' && currentInput !== 'エラー') {
             currentInput = String(parseFloat(currentInput) * -1);
